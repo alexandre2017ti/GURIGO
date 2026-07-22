@@ -1,0 +1,49 @@
+# ==========================================
+# 🌐 FRONT-END (React, Vite & Node)
+# ==========================================
+node_modules/
+dist/
+build/
+.DS_Store
+*.local
+
+# ==========================================
+# 🖥️ BACK-END & DESKTOP (.NET & Visual Studio)
+# ==========================================
+# Pastas de build e compilação
+bin/
+obj/
+x64/
+x86/
+
+# Arquivos gerados pelo Visual Studio / MSBuild
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+*.pidb
+*.booproj
+*.ncb
+*.opensdf
+*.sdf
+
+# ==========================================
+# 🔐 DADOS SENSÍVEIS E AMBIENTE LOCAL
+# ==========================================
+# Bancos de dados locais ou arquivos .dat de configuração do Kiosk/Desktop
+*.db
+*.sqlite
+*.dat
+*.log
+
+# Chaves de API do Google Cloud, credenciais de serviço e JSONs de produção
+credentials.json
+client_secret*.json
+*.pem
+
+# Compactados de backup locais
+*.rar
+*.zip
+*.tar
+*.gz
