@@ -72,17 +72,17 @@ graph TD
     PontoAPI --> Backend
     AuthAPI --> Backend
 
+   %% ==========================================
+    %% HIPERLINKS CLICÁVEIS (Forçando saída do Iframe do GitHub)
     %% ==========================================
-    %% HIPERLINKS CLICÁVEIS (Navegação GitHub Corrigida)
-    %% ==========================================
-    click Kiosk "../RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
-    click Dash "../RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
-    click Camera "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click Teclado "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click Alertas "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click PontoAPI "../RHSystem.UI/src/services" "Ir para a pasta de Serviços"
-    click AuthAPI "../RHSystem.UI/src/services" "Ir para a pasta de Serviços"
-    click Backend "../RHSystem" "Ir para o código do Back-End"
+    click Kiosk href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages" "Ir para a pasta de Páginas" _blank
+    click Dash href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages" "Ir para a pasta de Páginas" _blank
+    click Camera href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
+    click Teclado href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
+    click Alertas href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
+    click PontoAPI href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services" "Ir para a pasta de Serviços" _blank
+    click AuthAPI href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services" "Ir para a pasta de Serviços" _blank
+    click Backend href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem" "Ir para o código do Back-End" _blank
 
     %% ==========================================
     %% LEGENDA INFERIOR
