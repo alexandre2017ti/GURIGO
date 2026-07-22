@@ -37,6 +37,12 @@ x86/
 *.dat
 *.log
 
+# ==========================================
+# 🚫 PASTAS IGNORADAS
+# ==========================================
+aleatórios/
+kiosk/
+
 # Chaves de API do Google Cloud, credenciais de serviço e JSONs de produção
 credentials.json
 client_secret*.json
