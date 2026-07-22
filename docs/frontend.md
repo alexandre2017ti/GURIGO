@@ -73,16 +73,16 @@ graph TD
     AuthAPI --> Backend
 
     %% ==========================================
-    %% HIPERLINKS CLICÁVEIS (Navegação GitHub)
+    %% HIPERLINKS CLICÁVEIS (Navegação GitHub Corrigida)
     %% ==========================================
-    click Kiosk "./RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
-    click Dash "./RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
-    click Camera "./RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click Teclado "./RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click Alertas "./RHSystem.UI/src/components" "Ir para a pasta de Componentes"
-    click PontoAPI "./RHSystem.UI/src/services" "Ir para a pasta de Serviços"
-    click AuthAPI "./RHSystem.UI/src/services" "Ir para a pasta de Serviços"
-    click Backend "./RHSystem" "Ir para o código do Back-End"
+    click Kiosk "../RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
+    click Dash "../RHSystem.UI/src/pages" "Ir para a pasta de Páginas"
+    click Camera "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
+    click Teclado "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
+    click Alertas "../RHSystem.UI/src/components" "Ir para a pasta de Componentes"
+    click PontoAPI "../RHSystem.UI/src/services" "Ir para a pasta de Serviços"
+    click AuthAPI "../RHSystem.UI/src/services" "Ir para a pasta de Serviços"
+    click Backend "../RHSystem" "Ir para o código do Back-End"
 
     %% ==========================================
     %% LEGENDA INFERIOR
