@@ -11,6 +11,7 @@ O front-end do **RHEficiente** é a interface de interação direta com o usuár
 ## 📐 Padrão de Interface (UI/UX)
 - **Resolução Base:** Toda a interface foi desenhada nativamente para a resolução **1920x1080 (Full HD)**.
 - **Responsividade:** O escalonamento para telas menores deve ocorrer, mas o target principal (especialmente para os terminais de quiosque) é sempre 1080p.
+- **Modo Kiosk:** A tela de batida de ponto opera como um ambiente isolado (tela cheia). A ativação ocorre via Dashboard e o destravamento exige autenticação administrativa (ícone de cadeado).
 
 ## 🛠️ Tecnologias Principais
 - **Core:** React + Vite
@@ -22,7 +23,7 @@ O front-end do **RHEficiente** é a interface de interação direta com o usuár
 
 ## 🗺️ Diagrama de Arquitetura e Fluxo de Dados
 
-O fluxograma abaixo ilustra como as pastas e responsabilidades se comunicam dentro do front-end, desde a tela até o disparo da requisição para a API externa.
+O fluxograma abaixo ilustra o ciclo de navegação entre o ambiente administrativo e o terminal de ponto.
 
 ```mermaid
 graph TD
@@ -40,15 +41,15 @@ graph TD
     %% ==========================================
     subgraph UI ["/src/pages (Telas Principais)"]
         direction LR
+        Dash["Dashboard (Gestão de Unidades)"]:::page
         Kiosk["Tela de Quiosque (Ponto)"]:::page
-        Dash["Dashboard Administrativo"]:::page
+        AdminAuth["Login Admin (Cadeado)"]:::page
     end
 
     subgraph Componentes ["/src/components (Reutilizáveis)"]
         direction LR
-        Camera["Componente de Câmera"]:::component
-        Teclado["Teclado Numérico"]:::component
         Alertas["Modais e Alertas"]:::component
+        Relogio["Relógio Sincronizado"]:::component
     end
 
     subgraph Servicos ["/src/services (Comunicação HTTP)"]
@@ -60,29 +61,33 @@ graph TD
     Backend["API Back-End (C#)"]:::external
 
     %% ==========================================
-    %% CONEXÕES DE FLUXO
+    %% CONEXÕES DE FLUXO (O Ciclo do Kiosk)
     %% ==========================================
-    Kiosk --> Camera
-    Kiosk --> Teclado
+    Dash -- "Botão: Definir como Kiosk" --> Kiosk
+    Kiosk -- "Ícone: Cadeado" --> AdminAuth
+    AdminAuth -- "Senha Correta" --> Dash
+
+    Kiosk --> Relogio
     Dash --> Alertas
 
     Kiosk --> PontoAPI
     Dash --> AuthAPI
+    AdminAuth --> AuthAPI
 
     PontoAPI --> Backend
     AuthAPI --> Backend
 
-   %% ==========================================
+    %% ==========================================
     %% HIPERLINKS CLICÁVEIS (Forçando saída do Iframe do GitHub)
     %% ==========================================
-    click Kiosk href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages" "Ir para a pasta de Páginas" _blank
-    click Dash href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages" "Ir para a pasta de Páginas" _blank
-    click Camera href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
-    click Teclado href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
-    click Alertas href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components" "Ir para a pasta de Componentes" _blank
-    click PontoAPI href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services" "Ir para a pasta de Serviços" _blank
-    click AuthAPI href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services" "Ir para a pasta de Serviços" _blank
-    click Backend href "https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem" "Ir para o código do Back-End" _blank
+    click Dash href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages)" "Ir para a pasta de Páginas" _blank
+    click Kiosk href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages)" "Ir para a pasta de Páginas" _blank
+    click AdminAuth href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/pages)" "Ir para a pasta de Páginas" _blank
+    click Alertas href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components)" "Ir para a pasta de Componentes" _blank
+    click Relogio href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/components)" "Ir para a pasta de Componentes" _blank
+    click PontoAPI href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services)" "Ir para a pasta de Serviços" _blank
+    click AuthAPI href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem.UI/src/services)" "Ir para a pasta de Serviços" _blank
+    click Backend href "[https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem](https://github.com/alexandre2017ti/GURIGO/tree/main/RHSystem)" "Ir para o código do Back-End" _blank
 
     %% ==========================================
     %% LEGENDA INFERIOR
